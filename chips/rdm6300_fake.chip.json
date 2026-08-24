@@ -1,0 +1,6 @@
+{
+  "name": "rdm6300-fake",
+  "author": "jbug0x",
+  "pins": ["VCC", "GND", "TX", "RX"],
+  "controls": []
+}
