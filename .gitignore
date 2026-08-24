@@ -1,1 +1,7 @@
-.pio/*
+.pio/
+.vscode/
+Wokwi/chips/rdm6300-build/dist/
+*.elf
+*.bin
+!Wokwi/chips/*.wasm
+.DS_Store
