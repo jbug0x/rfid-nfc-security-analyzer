@@ -1,13 +1,11 @@
 # SYH2 RFID/NFC Security Analyzer
 
-Ferramenta portátil de análise de credenciais RFID/NFC, desenvolvida como projeto
-prático para a certificação **SYH2 (Solyd Hardware Hacking)**.
+Ferramenta portátil de análise de credenciais RFID/NFC, voltada a auditorias
+físicas de controle de acesso.
 
 Não é um clonador de crachá — o objetivo é reconhecimento e análise: identificar
 tecnologia (HF/LF), tipo de tag, UID, estrutura NDEF (quando aplicável) e permitir
-comparação entre credenciais, voltado a auditorias físicas de controle de acesso
-autorizadas.
-
+comparação entre credenciais.
 ## Hardware
 
 - **ESP32-S3** (DevKitC-1, N8R2 — 8MB Flash / 2MB PSRAM) — controlador principal
