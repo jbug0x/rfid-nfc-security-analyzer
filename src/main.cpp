@@ -28,6 +28,7 @@ void setup() {
   }
 
   Serial.println("OLED iniciado com sucesso!");
+  Serial.println("by jbug0x");
   Serial.println("Aguardando cartao LF (RDM6300)...");
 
   display.clearDisplay();
