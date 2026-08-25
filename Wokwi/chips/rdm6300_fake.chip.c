@@ -19,15 +19,18 @@ static void send_fake_card(void *user_data) {
   uint8_t uid[5] = {0x12, 0x34, 0x56, 0x78, 0x9A};
   uint8_t checksum = uid[0] ^ uid[1] ^ uid[2] ^ uid[3] ^ uid[4];
 
-  char packet[14];
+  uint8_t packet[14];
+  char hex[13];
+  snprintf(hex, sizeof(hex), "%02X%02X%02X%02X%02X%02X",
+           uid[0], uid[1], uid[2], uid[3], uid[4], checksum);
+
   packet[0] = 0x02; // STX
-  snprintf(packet + 1, 11, "%02X%02X%02X%02X%02X", uid[0], uid[1], uid[2], uid[3], uid[4]);
-  snprintf(packet + 11, 3, "%02X", checksum);
+  for (int i = 0; i < 12; i++) {
+    packet[1 + i] = (uint8_t)hex[i];
+  }
   packet[13] = 0x03; // ETX
 
-  for (int i = 0; i < 14; i++) {
-    uart_write(chip->uart, (uint8_t)packet[i]);
-  }
+  uart_write(chip->uart, packet, 14);
 }
 
 void chip_init(void) {
@@ -46,5 +49,5 @@ void chip_init(void) {
     .user_data = chip,
   };
   chip->timer = timer_init(&timer_config);
-  timer_start(chip->timer, 2000000, true); // dispara a cada 2s (microsegundos), repetindo
+  timer_start(chip->timer, 2000000, true); // dispara a cada 2s, repetindo
 }
